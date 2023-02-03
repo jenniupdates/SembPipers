@@ -1,0 +1,12 @@
+﻿,Internal_Name,Type,Tag,Constant,Formula_Python
+0,P1U1C001,Constant,,25,
+1,P1U1C002,Constant,,120,
+2,P1U1T001,Tag,SW1000,,
+3,P1U1F001,Formula,,,row['P1U1T001'] * row['P1U1C002'] / 100
+4,P1U1F002,Formula,,,row['P1U1F001'] + row['P1U1T004']
+5,P1U1C003,Constant,,-3,
+6,P1U1T002,Tag,SW1350,,
+7,P1U1T003,Tag,WE2000,,
+8,P1U1T004,Tag,WE4000,,
+9,P1U1F003,Formula,,,row['P1U1F004'] + row['P1U1T004']
+10,P1U1F004,Formula,,,100 if row['P1U1T003'] > 250 else 0.8*row['P1U1T003']

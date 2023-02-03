@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss
+    ports:
+      - "5040:3000"
+    volumes:
+      - ./grafana-storage:/var/lib/grafana:rw
+    environment:
+     - GF_HTTP_PORT=5040
+     - GF_SECURITY_ALLOW_EMBEDDING=true
+     - GF_AUTH_ANONYMOUS_ENABLED=true
+  
+
+  

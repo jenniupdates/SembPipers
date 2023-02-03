@@ -1,0 +1,4 @@
+﻿id,date,mean_temperature,mean_wind_speed,total_rainfall
+1,7/1/2022 12:00,28.5,29.7,0
+2,7/2/2022 12:00,28.3,30.6,4
+3,7/3/2022 12:00,29.3,32.2,0

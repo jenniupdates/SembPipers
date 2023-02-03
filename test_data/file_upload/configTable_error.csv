@@ -1,0 +1,3 @@
+input_table_name,input_table_column,input_allowed_value,extra_col
+"wind_input","Wind Type","INDO CLV",extra_data
+"solar_input","Solar Type","INDO CLV",extra_data
