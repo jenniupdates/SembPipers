@@ -1,0 +1,13 @@
+python3 backend/User/User.py &
+python3 backend/ConfigTable/ConfigTable.py &
+python3 backend/FileUpload/FileUpload.py &
+python3 backend/InputTable/InputTable.py &
+python3 backend/ValidationRulesTable/ValidationRulesTable.py &
+python3 backend/ActivatedValidationRulesTable/ActivatedValidationRulesTable.py &
+python3 backend/ValidationFormulaTable/ValidationFormulaTable.py &
+python3 backend/ActivatedValidationFormulaTable/ActivatedValidationFormulaTable.py &
+python3 backend/InternalDirectory/InternalDirectory.py &
+python3 backend/GenericFunctions/GenericFunctions.py &
+python3 backend/ProcessValidation/ProcessValidation.py &
+python3 backend/Annotation/Annotation.py &
+python3 backend/BackgroundManipulation/BackgroundManipulation.py &

@@ -1,0 +1,197 @@
+version: "3.8"
+
+volumes:
+    mysql:
+
+networks:
+  sembcorp-docker-network:
+    driver: bridge
+
+services:
+  react-client:
+    container_name: react-frontend
+    build:
+      context : .
+      dockerfile: ./Dockerfile
+    image: yinshanz/react-client:1.0
+    ports: 
+      - "3000:3000"
+  
+  user:
+    container_name: user
+    build:  
+      context: ./
+      dockerfile: ./backend/User/Dockerfile
+    image: yinshanz/user:1.0
+    ports:
+      - "5001:5001"
+    networks:
+      - sembcorp-docker-network
+
+  fileupload:
+    container_name: file_upload
+    build:  
+      context: ./
+      dockerfile: ./backend/FileUpload/Dockerfile
+    image: yinshanz/fileupload:1.0
+    ports:
+      - "5004:5004"
+    networks:
+      - sembcorp-docker-network
+
+  configtable:
+    container_name: config_table
+    build:  
+      context: ./
+      dockerfile: ./backend/ConfigTable/Dockerfile
+    image: yinshanz/configtable:1.0
+    ports:
+      - "5002:5002"
+    networks:
+      - sembcorp-docker-network
+
+  inputtable:
+    container_name: input_table
+    build:  
+      context: ./
+      dockerfile: ./backend/InputTable/Dockerfile
+    image: yinshanz/inputtable:1.0
+    ports:
+      - "5003:5003"
+    networks:
+      - sembcorp-docker-network
+
+  genericfunctions:
+    container_name: generic_functions
+    build:  
+      context: ./
+      dockerfile: ./backend/GenericFunctions/Dockerfile
+    image: yinshanz/genericfunctions:1.0
+    ports:
+      - "5007:5007"
+    networks:
+      - sembcorp-docker-network
+
+  validationrulestable:
+    container_name: validation_rules_table
+    build:  
+      context: ./
+      dockerfile: ./backend/ValidationRulesTable/Dockerfile
+    image: yinshanz/validationrulestable:1.0
+    ports:
+      - "5005:5005"
+    networks:
+      - sembcorp-docker-network
+  
+  activatedvalidationrulestable:
+    container_name: activated_validation_rules_table
+    build:  
+      context: ./
+      dockerfile: ./backend/ActivatedValidationRulesTable/Dockerfile
+    image: yinshanz/activatedvalidationrulestable:1.0
+    ports:
+      - "5006:5006"
+    networks:
+      - sembcorp-docker-network
+
+  validationformulatable:
+    container_name: validation_formula_table
+    build:  
+      context: ./
+      dockerfile: ./backend/ValidationFormulaTable/Dockerfile
+    image: yinshanz/validationformulatable:1.0
+    ports:
+      - "5020:5020"
+    networks:
+      - sembcorp-docker-network
+
+  activatedvalidationformulatable:
+    container_name: activated_validation_formula_table
+    image: yinshanz/activatedvalidationformulatable:1.0
+    ports: 
+      - "5021:5021"
+    build:
+      context: ./
+      dockerfile: ./backend/ActivatedValidationFormulaTable/Dockerfile
+    networks:
+      - sembcorp-docker-network
+
+  backgroundmanipulation:
+    container_name: background_manipulation
+    image: yinshanz/backgroundmanipulation:1.0
+    ports: 
+      - "5030:5030"
+    build:
+      context: ./
+      dockerfile: ./backend/BackgroundManipulation/Dockerfile
+    networks:
+      - sembcorp-docker-network
+
+  annotation:
+    container_name: annotation
+    build:  
+      context: ./
+      dockerfile: ./backend/Annotation/Dockerfile
+    image: yinshanz/annotation:1.0
+    ports:
+      - "5031:5031"  
+    networks:
+      - sembcorp-docker-network
+
+  internaldirectory:
+    container_name: internal_directory
+    build:  
+      context: ./
+      dockerfile: ./backend/InternalDirectory/Dockerfile
+    image: yinshanz/internaldirectory:1.0
+    ports:
+      - "5010:5010"
+    networks:
+      - sembcorp-docker-network
+
+  processvalidation:
+    container_name: process_validation
+    build:  
+      context: ./
+      dockerfile: ./backend/ProcessValidation/Dockerfile
+    image: yinshanz/processvalidation:1.0
+    ports:
+      - "5011:5011"
+    networks:
+      - sembcorp-docker-network
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss
+    ports:
+      - "5040:3000"
+    expose:
+      - "5040"
+    environment:
+     #- GF_HTTP_PORT=5040
+     - GF_SECURITY_ALLOW_EMBEDDING=true
+     - GF_AUTH_ANONYMOUS_ENABLED=true
+     - GF_DATABASE_ANONYMOUS_ENABLED=true
+     - GF_PATHS_DATA=/var/lib/grafana/grafana.db     
+    
+    networks:
+      - sembcorp-docker-network
+
+  db:
+    image: mysql:latest
+    container_name: db
+    ports:
+      - "3306:3306"
+    hostname: localhost
+    environment:
+      - MYSQL_DATABASE=sembcorp
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MY_SQL_USER=root
+      - mysqlx=0
+    expose:
+      - "3306"
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - sembcorp-docker-network
+    

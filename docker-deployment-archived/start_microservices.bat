@@ -1,0 +1,13 @@
+start python ./User/User.py
+start python ./ConfigTable/ConfigTable.py
+start python ./FileUpload/FileUpload.py
+start python ./InputTable/InputTable.py
+start python ./ValidationRulesTable/ValidationRulesTable.py
+start python ./ActivatedValidationRulesTable/ActivatedValidationRulesTable.py
+start python ./ValidationFormulaTable/ValidationFormulaTable.py
+start python ./ActivatedValidationFormulaTable/ActivatedValidationFormulaTable.py
+start python ./InternalDirectory/InternalDirectory.py
+start python ./GenericFunctions/GenericFunctions.py
+start python ./ProcessValidation/ProcessValidation.py
+start python ./Annotation/Annotation.py
+start python ./BackgroundManipulation/BackgroundManipulation.py
